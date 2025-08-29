@@ -23,7 +23,7 @@ impl Bot {
         eprintln!("turning bot on; key {}", self.key.pubkey());
     }
     pub(crate) fn shutdown(&self) {
-        eprintln!("shutting down bot");
+        eprintln!("shutting down bot: {}", self.key.pubkey());
     }
 
     fn slot(&mut self, slot: u64, status: u8) -> () {
@@ -60,12 +60,6 @@ impl Bot {
 }
 
 impl catscope_bot_guest::catscopevalidator::exports::catscope::witbot::updater::Guest for Wrapper {
-    fn slot(slot: u64, status: u8) -> () {
-        let ptr = unsafe { GLOBAL as *mut Bot };
-        let bot: &mut Bot = unsafe { &mut *ptr };
-        bot.slot(slot, status);
-    }
-
     fn transactionv1(signature: Vec<u8>, slot: u64, status: u8, txresult: u32) -> () {
         let ptr = unsafe { GLOBAL as *mut Bot };
         let bot: &mut Bot = unsafe { &mut *ptr };
@@ -82,5 +76,10 @@ impl catscope_bot_guest::catscopevalidator::exports::catscope::witbot::updater::
         let ptr = unsafe { GLOBAL as *mut Bot };
         let bot: &mut Bot = unsafe { &mut *ptr };
         bot.tokenv1(id, slot, lamports, mint, owner, balance);
+    }
+    fn slot(slot: u64, status: u8) -> () {
+        let ptr = unsafe { GLOBAL as *mut Bot };
+        let bot: &mut Bot = unsafe { &mut *ptr };
+        bot.slot(slot, status);
     }
 }
