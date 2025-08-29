@@ -5,12 +5,12 @@ edition = "2024"
 
 [dependencies]
 tokio = { version = "1.43", features = ["macros", "rt", "net", "io-util"] }
-catscope-bot-guest = "0.1.6"
+catscope-bot-guest = "0.1.7"
 solana-sdk = "3.0.0"
 
 [patch.crates-io]
 tokio = { git = "https://github.com/pimeys/tokio", branch = "wasip2" }
 socket2 = { git = "https://github.com/pimeys/socket2", branch = "wasip2" }
 hyper-util = { git = "https://github.com/pimeys/hyper-util", branch = "wasip2" }
-#catscope-bot-guest = { git = "https://git.noncepad.com/catscope-bot-guest.git", tag = "0.1.6" }
-catscope-bot-guest = { path = "../catscope-bot-guest" }
+catscope-bot-guest = { git = "https://git.noncepad.com/catscope-bot-guest.git", tag = "0.1.7" }
+#catscope-bot-guest = { path = "../catscope-bot-guest" }
