@@ -6,6 +6,7 @@ edition = "2024"
 [dependencies]
 tokio = { version = "1.43", features = ["macros", "rt", "net", "io-util"] }
 catscope-bot-guest = "0.1.6"
+solana-sdk = "3.0.0"
 
 [patch.crates-io]
 tokio = { git = "https://github.com/pimeys/tokio", branch = "wasip2" }

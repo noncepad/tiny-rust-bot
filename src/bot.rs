@@ -1,5 +1,8 @@
 use catscope_bot_guest;
-use core::cell::UnsafeCell;
+use solana_sdk::signature::Keypair;
+use solana_sdk::signer::Signer;
+
+use crate::extra::key_generate;
 
 // Global variable
 //pub static mut GLOBAL: MyBot = MyBot::new();
@@ -7,17 +10,22 @@ pub static mut GLOBAL: usize = 0;
 
 pub struct Wrapper {}
 
-pub struct Bot {}
+pub struct Bot {
+    key: Keypair,
+}
+
 impl Bot {
-    pub(crate) const fn new() -> Self {
-        Self {}
+    pub(crate) fn new() -> Self {
+        let key = key_generate().unwrap();
+        Self { key }
     }
     pub(crate) fn init(&self) {
-        eprintln!("turning bot on");
+        eprintln!("turning bot on; key {}", self.key.pubkey());
     }
     pub(crate) fn shutdown(&self) {
         eprintln!("shutting down bot");
     }
+
     fn slot(&mut self, slot: u64, status: u8) -> () {
         eprint!("on slot: {} {}", slot, status);
     }

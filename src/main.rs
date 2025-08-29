@@ -5,10 +5,12 @@ use std::time::Duration;
 use self::bot::{Bot, GLOBAL};
 
 pub(crate) mod bot;
-
+pub(crate) mod err;
+pub(crate) mod extra;
 #[tokio::main(flavor = "current_thread")]
 async fn main() {
     // Initialize it once
+
     let bot = Bot::new();
     unsafe {
         GLOBAL = Box::into_raw(Box::new(bot)) as usize;
