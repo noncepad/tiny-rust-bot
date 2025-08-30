@@ -2621,8 +2621,3 @@ name = "zeroize"
 version = "1.8.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ced3678a2879b30306d323f4542626697a464a97c0a07c9aebf7ebca65cd4dde"
-
-[[patch.unused]]
-name = "hyper-util"
-version = "0.1.10"
-source = "git+https://github.com/pimeys/hyper-util?branch=wasip2#a187c30a7fd3d3a3dfa082dd616c4db0bdf4b6c4"
